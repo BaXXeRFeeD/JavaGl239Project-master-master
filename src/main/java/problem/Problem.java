@@ -99,6 +99,22 @@ public class Problem {
                     }
                 }
                 pointos.clear();
+                pointos.add(new Point(r.a.x, r.a.y));
+                pointos.add(new Point(r.b.x, r.b.y));
+                pointos.add(new Point(r.c.x, r.c.y));
+                pointos.add(new Point(r.d.x, r.d.y));
+                pointos.add(new Point(a.vertex.x, a.vertex.y));
+                pointos.add(new Point(a.vertexa.x, a.vertexa.y));
+                pointos.add(new Point(a.vertexb.x, a.vertexb.y));
+                for (int i = 0; i < 4; i++) {
+                    if(RectangleInAngle(pointos.get(i),a.vertex, a.vertexa, a.vertexb))
+                        pointsosos.add(pointos.get(i));
+                }
+                for (int i = 4; i < 7; i++) {
+                    if(RectangleInAngle(pointos.get(i),r.a,r.b,r.c)||RectangleInAngle(pointos.get(i),r.d,r.b,r.c))
+                        pointsosos.add(pointos.get(i));
+                }
+                pointos.clear();
             }
         }
         for (Point p : pointsosos) {
@@ -114,6 +130,23 @@ public class Problem {
             d += z.get(i).x * z.get(i + 1).y - z.get(i).y * z.get(i + 1).x;
         }
         return Math.abs(d) / 2;
+    }
+
+    public boolean RectangleInAngle(Point p, Point p1, Point p2, Point p3) {
+        double x1 = p1.x;
+        double y1 = p1.y;
+        double x2 = p2.x;
+        double y2 = p2.y;
+        double x3 = p3.x;
+        double y3 = p3.y;
+        double x0 = p.x;
+        double y0 = p.y;
+        double d1 = (x1 - x0) * (y2 - y1) - (x2 - x1) * (y1 - y0);
+        double d2 = (x2 - x0) * (y3 - y2) - (x3 - x2) * (y2 - y0);
+        double d3 = (x3 - x0) * (y1 - y3) - (x1 - x3) * (y3 - y0);
+        if((d1>=0&&d2>=0&&d3>=0)||(d1<=0&&d2<=0&&d3<=0))
+            return true;
+        return false;
     }
 
     /**
