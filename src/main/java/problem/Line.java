@@ -1,6 +1,6 @@
 package problem;
 
-class Line
+public class Line
 {
     double A;
     double B;
@@ -10,7 +10,7 @@ class Line
     double y11;
     double x22;
     double y22;
-    Line(double x1, double y1, double x2, double y2){
+    public Line(double x1, double y1, double x2, double y2){
         A = y1 - y2;
         B = x2 - x1;
         C = x1*y2 - x2*y1;

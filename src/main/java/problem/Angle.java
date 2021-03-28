@@ -5,11 +5,11 @@ import javax.media.opengl.GL2;
 import java.util.Random;
 
 public class Angle {
-    Point vertex;
-    Point vertexa;
-    Point vertexb;
+    public Point vertex;
+    public Point vertexa;
+    public Point vertexb;
 
-    Angle(Point x, Point y, Point z) {
+    public Angle(Point x, Point y, Point z) {
         vertex = x;
         vertexa = vertexanglepoint(x,y);
         vertexb = vertexanglepoint(x,z);

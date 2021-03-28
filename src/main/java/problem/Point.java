@@ -104,6 +104,11 @@ public class Point {
             return true;
         return false;
     }
+    public boolean checkPoint(Point a){
+        if(Math.abs(a.x-x)<0.000000001&&Math.abs(a.y-y)<0.000000001)
+            return true;
+        return false;
+    }
 
     /**
      * Получить строковое представление точки
