@@ -143,16 +143,18 @@ public class Problem {
         double d1 = (x1 - x0) * (y2 - y1) - (x2 - x1) * (y1 - y0);
         double d2 = (x2 - x0) * (y3 - y2) - (x3 - x2) * (y2 - y0);
         double d3 = (x3 - x0) * (y1 - y3) - (x1 - x3) * (y3 - y0);
-        if((d1>=0&&d2>=0&&d3>=0)||(d1<=0&&d2<=0&&d3<=0))
+        if ((d1 >= 0 && d2 >= 0 && d3 >= 0) || (d1 <= 0 && d2 <= 0 && d3 <= 0))
             return true;
         return false;
     }
-    public ArrayList<Point> Convexity(ArrayList<Point> p){
-        if(p.size()==0||p.size()==1||p.size()==2)
+
+    public ArrayList<Point> Convexity(ArrayList<Point> p) {
+        if (p.size() == 0 || p.size() == 1 || p.size() == 2)
             return p;
         ArrayList<Point> end = new ArrayList<>();
         return p;
     }
+
     /**
      * Загрузить задачу из файла
      */
@@ -207,10 +209,10 @@ public class Problem {
             Point a = Point.getRandomPoint();
             Point b = Point.getRandomPoint();
             Point c = Point.getRandomPoint();
-            problem.Line l1 = new problem.Line(c.x,c.y,b.x,b.y);
-            problem.Line l2 = new problem.Line(c.x,c.y,a.x,a.y);
-            problem.Line l3 = new problem.Line(b.x,b.y,a.x,a.y);
-            if (l1.isParallel(l2)||l3.isParallel(l1)||l2.isParallel(l3))
+            problem.Line l1 = new problem.Line(c.x, c.y, b.x, b.y);
+            problem.Line l2 = new problem.Line(c.x, c.y, a.x, a.y);
+            problem.Line l3 = new problem.Line(b.x, b.y, a.x, a.y);
+            if (l1.isParallel(l2) || l3.isParallel(l1) || l2.isParallel(l3))
                 i--;
             else {
                 if (a.distanceTo(b) * a.distanceTo(b) + a.distanceTo(c) * a.distanceTo(c) <=

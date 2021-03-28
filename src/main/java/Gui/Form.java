@@ -104,10 +104,10 @@ public class Form extends JFrame {
                 problem.Point vertex = new problem.Point(x1, y1);
                 problem.Point a = new problem.Point(x2, y2);
                 problem.Point b = new problem.Point(x3, y3);
-                problem.Line l1 = new problem.Line(vertex.x,vertex.y,b.x,b.y);
-                problem.Line l2 = new problem.Line(vertex.x,vertex.y,a.x,a.y);
-                problem.Line l3 = new problem.Line(b.x,b.y,a.x,a.y);
-                if (l1.isParallel(l2)||l3.isParallel(l1)||l2.isParallel(l3)) {
+                problem.Line l1 = new problem.Line(vertex.x, vertex.y, b.x, b.y);
+                problem.Line l2 = new problem.Line(vertex.x, vertex.y, a.x, a.y);
+                problem.Line l3 = new problem.Line(b.x, b.y, a.x, a.y);
+                if (l1.isParallel(l2) || l3.isParallel(l1) || l2.isParallel(l3)) {
                 } else {
                     if (vertex.distanceTo(a) * vertex.distanceTo(a) + vertex.distanceTo(b) * vertex.distanceTo(b) <
                             a.distanceTo(b) * a.distanceTo(b)) {
