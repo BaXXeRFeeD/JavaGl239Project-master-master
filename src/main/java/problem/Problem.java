@@ -97,28 +97,29 @@ public class Problem {
                     for (Point p : pointos) {
                         pointsosos.add(p);
                     }
-                }
-                pointos.clear();
-                pointos.add(new Point(r.a.x, r.a.y));
-                pointos.add(new Point(r.b.x, r.b.y));
-                pointos.add(new Point(r.c.x, r.c.y));
-                pointos.add(new Point(r.d.x, r.d.y));
-                pointos.add(new Point(a.vertex.x, a.vertex.y));
-                pointos.add(new Point(a.vertexa.x, a.vertexa.y));
-                pointos.add(new Point(a.vertexb.x, a.vertexb.y));
-                for (int i = 0; i < 4; i++) {
-                    if(RectangleInAngle(pointos.get(i),a.vertex, a.vertexa, a.vertexb))
-                        pointsosos.add(pointos.get(i));
-                }
-                for (int i = 4; i < 7; i++) {
-                    if(RectangleInAngle(pointos.get(i),r.a,r.b,r.c)||RectangleInAngle(pointos.get(i),r.d,r.b,r.c))
-                        pointsosos.add(pointos.get(i));
+                    pointos.clear();
+                    pointos.add(new Point(r.a.x, r.a.y));
+                    pointos.add(new Point(r.b.x, r.b.y));
+                    pointos.add(new Point(r.c.x, r.c.y));
+                    pointos.add(new Point(r.d.x, r.d.y));
+                    pointos.add(new Point(a.vertex.x, a.vertex.y));
+                    pointos.add(new Point(a.vertexa.x, a.vertexa.y));
+                    pointos.add(new Point(a.vertexb.x, a.vertexb.y));
+                    for (int i = 0; i < 4; i++) {
+                        if (RectangleInAngle(pointos.get(i), a.vertex, a.vertexa, a.vertexb))
+                            pointsosos.add(pointos.get(i));
+                    }
+                    for (int i = 4; i < 7; i++) {
+                        if (RectangleInAngle(pointos.get(i), r.a, r.b, r.c) || RectangleInAngle(pointos.get(i), r.d, r.b, r.c))
+                            pointsosos.add(pointos.get(i));
+                    }
                 }
                 pointos.clear();
             }
         }
         for (Point p : pointsosos) {
             pointsos.add(p);
+            System.out.println(p);
         }
     }
 
@@ -148,7 +149,12 @@ public class Problem {
             return true;
         return false;
     }
-
+    public ArrayList<Point> Convexity(ArrayList<Point> p){
+        if(p.size()==0||p.size()==1||p.size()==2)
+            return p;
+        ArrayList<Point> end = new ArrayList<>();
+        return p;
+    }
     /**
      * Загрузить задачу из файла
      */

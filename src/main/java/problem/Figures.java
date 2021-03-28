@@ -72,14 +72,22 @@ public class Figures {
             gl.glEnd();
         }
     }
+
     public static void renderQuad2(GL2 gl, ArrayList<Point> z) {
-            gl.glColor3d(0.5, 1, 0);
-            gl.glLineWidth(5);
-            gl.glBegin(GL_LINE_LOOP);
-        for (Point i:z)
+        gl.glColor3d(0.5, 1, 0);
+        gl.glLineWidth(5);
+        gl.glPointSize(5);
+        gl.glBegin(GL_POINTS);
+        for (Point i : z) {
             gl.glVertex2d(i.x, i.y);
             gl.glEnd();
+        }
+        gl.glBegin(GL_LINE_LOOP);
+        for (Point i : z)
+            gl.glVertex2d(i.x, i.y);
+        gl.glEnd();
     }
+
     public static void renderCircle(GL2 gl, Point a, double x, boolean y) {
         if (!y) {
             gl.glColor3d(1, 0.5, 0);
@@ -123,10 +131,10 @@ public class Figures {
         gl.glLineWidth(2);
         gl.glPointSize(5);
         gl.glBegin(GL_LINE_LOOP);
-        gl.glVertex2d(l.a.x,l.a.y);
-        gl.glVertex2d(l.b.x,l.b.y);
-        gl.glVertex2d(l.c.x,l.c.y);
-        gl.glVertex2d(l.d.x,l.d.y);
+        gl.glVertex2d(l.a.x, l.a.y);
+        gl.glVertex2d(l.b.x, l.b.y);
+        gl.glVertex2d(l.c.x, l.c.y);
+        gl.glVertex2d(l.d.x, l.d.y);
         gl.glEnd();
     }
 }
