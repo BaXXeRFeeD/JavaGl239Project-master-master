@@ -125,7 +125,6 @@ public class Problem {
             if (t) {
             } else {
                 pointsos.add(p);
-                System.out.println(p);
             }
         }
     }
