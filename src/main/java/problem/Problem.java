@@ -117,7 +117,16 @@ public class Problem {
             }
         }
         for (Point p : pointsosos) {
-            pointsos.add(p);
+            boolean t = false;
+            for (Point b : pointsos) {
+                if (b.checkPoint(p))
+                    t = true;
+            }
+            if (t) {
+            } else {
+                pointsos.add(p);
+                System.out.println(p);
+            }
         }
     }
 
