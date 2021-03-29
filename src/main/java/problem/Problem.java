@@ -102,16 +102,12 @@ public class Problem {
                     pointos.add(new Point(r.c.x, r.c.y));
                     pointos.add(new Point(r.d.x, r.d.y));
                     pointos.add(new Point(a.vertex.x, a.vertex.y));
-                    pointos.add(new Point(a.vertexa.x, a.vertexa.y));
-                    pointos.add(new Point(a.vertexb.x, a.vertexb.y));
                     for (int i = 0; i < 4; i++) {
                         if (RectangleInAngle(pointos.get(i), a.vertex, a.vertexa, a.vertexb))
                             pointsosos.add(pointos.get(i));
                     }
-                    for (int i = 4; i < 7; i++) {
-                        if (RectangleInAngle(pointos.get(i), r.a, r.b, r.c) || RectangleInAngle(pointos.get(i), r.d, r.b, r.c))
-                            pointsosos.add(pointos.get(i));
-                    }
+                        if (RectangleInAngle(pointos.get(4), r.a, r.b, r.c) || RectangleInAngle(pointos.get(4), r.d, r.b, r.c))
+                            pointsosos.add(pointos.get(4));
                 }
                 pointos.clear();
             }
