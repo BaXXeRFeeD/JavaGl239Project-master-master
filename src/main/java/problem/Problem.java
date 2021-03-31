@@ -214,12 +214,6 @@ public class Problem {
      *
      * @param n кол-во точек
      */
-    public void addRandomPoints(int n) {
-        for (int i = 0; i < n; i++) {
-            Point p = Point.getRandomPoint();
-            points.add(p);
-        }
-    }
 
     public void addRandomAngle(int n) {
         for (int i = 0; i < n; i++) {
