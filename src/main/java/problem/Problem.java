@@ -143,18 +143,6 @@ public class Problem {
             return Double.compare(angleA, angleB);
         });
         return p;
-
-//
-//        int k = 0;
-//        ArrayList<Point> q = new ArrayList<>();
-//        for (int i = 0; i < p.size(); q.add(p.get(i++)), ++k)
-//            for (; k >= 2 && !cw(q.get(k - 2), q.get(k - 1), p.get(i)); --k) {
-//            }
-//        for (int i = p.size() - 2, t = k; i >= 0; q.add(p.get(i--)), ++k)
-//            for (; k > t && !cw(q.get(k - 2), q.get(k - 1), p.get(i)); --k) {
-//            }
-//        resize(q, k - 1 - (q.get(0) == q.get(1) ? 1 : 0));
-        //   return q;
     }
 
     public double square(ArrayList<Point> z) {
@@ -182,22 +170,6 @@ public class Problem {
         if ((d1 >= 0 && d2 >= 0 && d3 >= 0) || (d1 <= 0 && d2 <= 0 && d3 <= 0))
             return true;
         return false;
-    }
-
-    public boolean cw(final Point p1, final Point p2, final Point p3) {
-        return (p2.getX() - p1.getX()) * (p3.y - p1.y) - (p2.y - p1.y) * (p3.x - p1.x) < 0;
-    }
-
-    public ArrayList<Point> resize(ArrayList<Point> p, int size) {
-        if (p.size() > size) {
-            for (int i = p.size() - 1; i >= size - 1; p.remove(i), --i) {
-            }
-        } else if (p.size() < size) {
-            Point temp = p.get(p.size() - 1);
-            for (int i = 0, j = size - p.size(); i < j; p.add(temp), ++i) {
-            }
-        }
-        return p;
     }
 
     /**
