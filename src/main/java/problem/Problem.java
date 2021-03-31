@@ -2,8 +2,7 @@ package problem;
 
 import javax.media.opengl.GL2;
 import java.io.*;
-import java.util.ArrayList;
-import java.util.Scanner;
+import java.util.*;
 
 
 /**
@@ -106,8 +105,8 @@ public class Problem {
                         if (RectangleInAngle(pointos.get(i), a.vertex, a.vertexa, a.vertexb))
                             pointsosos.add(pointos.get(i));
                     }
-                        if (RectangleInAngle(pointos.get(4), r.a, r.b, r.c) || RectangleInAngle(pointos.get(4), r.d, r.b, r.c))
-                            pointsosos.add(pointos.get(4));
+                    if (RectangleInAngle(pointos.get(4), r.a, r.b, r.c) || RectangleInAngle(pointos.get(4), r.d, r.b, r.c))
+                        pointsosos.add(pointos.get(4));
                 }
                 pointos.clear();
             }
@@ -123,6 +122,39 @@ public class Problem {
                 pointsos.add(p);
             }
         }
+        ArrayList<Point> arr = Convexity(pointsos);
+    }
+
+    private ArrayList<Point> Convexity(ArrayList<Point> p) {
+        if (p.size() == 0 || p.size() == 1 || p.size() == 2)
+            return p;
+
+        Point sum = new Point(0, 0);
+        for (Point pl : p)
+            sum = new Point(sum.x + pl.x, sum.y + pl.y);
+
+        sum = new Point(sum.x / p.size(), sum.y / p.size());
+
+        final Point center = sum;
+
+        p.sort((a, b) -> {
+            double angleA = Math.atan2(a.x - center.x, a.y - center.y);
+            double angleB = Math.atan2(b.x - center.x, b.y - center.y);
+            return Double.compare(angleA, angleB);
+        });
+        return p;
+
+//
+//        int k = 0;
+//        ArrayList<Point> q = new ArrayList<>();
+//        for (int i = 0; i < p.size(); q.add(p.get(i++)), ++k)
+//            for (; k >= 2 && !cw(q.get(k - 2), q.get(k - 1), p.get(i)); --k) {
+//            }
+//        for (int i = p.size() - 2, t = k; i >= 0; q.add(p.get(i--)), ++k)
+//            for (; k > t && !cw(q.get(k - 2), q.get(k - 1), p.get(i)); --k) {
+//            }
+//        resize(q, k - 1 - (q.get(0) == q.get(1) ? 1 : 0));
+        //   return q;
     }
 
     public double square(ArrayList<Point> z) {
@@ -152,10 +184,19 @@ public class Problem {
         return false;
     }
 
-    public ArrayList<Point> Convexity(ArrayList<Point> p) {
-        if (p.size() == 0 || p.size() == 1 || p.size() == 2)
-            return p;
-        ArrayList<Point> end = new ArrayList<>();
+    public boolean cw(final Point p1, final Point p2, final Point p3) {
+        return (p2.getX() - p1.getX()) * (p3.y - p1.y) - (p2.y - p1.y) * (p3.x - p1.x) < 0;
+    }
+
+    public ArrayList<Point> resize(ArrayList<Point> p, int size) {
+        if (p.size() > size) {
+            for (int i = p.size() - 1; i >= size - 1; p.remove(i), --i) {
+            }
+        } else if (p.size() < size) {
+            Point temp = p.get(p.size() - 1);
+            for (int i = 0, j = size - p.size(); i < j; p.add(temp), ++i) {
+            }
+        }
         return p;
     }
 
