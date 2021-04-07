@@ -164,13 +164,13 @@ public class Form extends JFrame {
         loadFromFileBtn2.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                renderer.problem.loadFromFile();
+                renderer.problem.loadFromFileRectangle();
             }
         });
         saveToFileBtn2.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                renderer.problem.saveToFile();
+                renderer.problem.saveToFileRectangle();
             }
         });
         clearBtn.addActionListener(new ActionListener() {

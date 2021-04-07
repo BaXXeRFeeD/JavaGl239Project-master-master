@@ -9,7 +9,13 @@ public class Rectangle {
     public Point b;
     public Point d;
     public Point c;
+    public Point vertex;
+    public Point x;
+    public Point y;
     public Rectangle(Point vertex, Point a, Point b) {
+        this.vertex=vertex;
+        x=a;
+        y=b;
         this.a = a;
         this.b = b;
         Line m = new Line(a.x, a.y, b.x, b.y);

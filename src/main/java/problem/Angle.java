@@ -8,8 +8,12 @@ public class Angle {
     public Point vertex;
     public Point vertexa;
     public Point vertexb;
+    public Point a;
+    public Point b;
 
     public Angle(Point x, Point y, Point z) {
+        a = y;
+        b = z;
         vertex = x;
         vertexa = vertexanglepoint(x, y);
         vertexb = vertexanglepoint(x, z);

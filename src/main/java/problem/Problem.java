@@ -182,12 +182,38 @@ public class Problem {
             Scanner sc = new Scanner(file);
             // пока в файле есть непрочитанные строки
             while (sc.hasNextLine()) {
-                double x = sc.nextDouble();
-                double y = sc.nextDouble();
-                int setVal = sc.nextInt();
+                double vertexX = sc.nextDouble();
+                double vertexY = sc.nextDouble();
+                double aX = sc.nextDouble();
+                double aY = sc.nextDouble();
+                double bX = sc.nextDouble();
+                double bY = sc.nextDouble();
                 sc.nextLine();
-                Point point = new Point(x, y, setVal);
-                points.add(point);
+                Angle angle = new Angle(new Point(vertexX,vertexY), new Point(aX,aY), new Point(bX,bY));
+                angles.add(angle);
+            }
+        } catch (Exception ex) {
+            System.out.println("Ошибка чтения из файла: " + ex);
+        }
+    }
+
+    public void loadFromFileRectangle() {
+        rectangles.clear();
+        try {
+            File file = new File(FILE_RECTANGLES);
+            Scanner sc = new Scanner(file);
+            // пока в файле есть непрочитанные строки
+            while (sc.hasNextLine()) {
+                double vertexX = sc.nextDouble();
+                double vertexY = sc.nextDouble();
+                double aX = sc.nextDouble();
+                double aY = sc.nextDouble();
+                double bX = sc.nextDouble();
+                double bY = sc.nextDouble();
+                sc.nextLine();
+                Rectangle rectangle = new Rectangle(new Point(vertexX,vertexY), new Point(aX, aY),
+                        new Point(bX,bY));
+                rectangles.add(rectangle);
             }
         } catch (Exception ex) {
             System.out.println("Ошибка чтения из файла: " + ex);
@@ -200,8 +226,22 @@ public class Problem {
     public void saveToFile() {
         try {
             PrintWriter out = new PrintWriter(new FileWriter(FILE_ANGLES));
-            for (Point point : points) {
-                out.printf("%.2f %.2f %d\n", point.x, point.y, point.setNumber);
+            for (Angle angle : angles) {
+                out.printf("%.2f %.2f %.2f %.2f %.2f %.2f\n", angle.vertex.x, angle.vertex.y,
+                        angle.a.x, angle.a.y, angle.b.x, angle.b.y);
+            }
+            out.close();
+        } catch (IOException ex) {
+            System.out.println("Ошибка записи в файл: " + ex);
+        }
+    }
+
+    public void saveToFileRectangle() {
+        try {
+            PrintWriter out = new PrintWriter(new FileWriter(FILE_RECTANGLES));
+            for (Rectangle rectangle : rectangles) {
+                out.printf("%.2f %.2f %.2f %.2f %.2f %.2f\n", rectangle.vertex.x, rectangle.vertex.y,
+                        rectangle.a.x, rectangle.a.y, rectangle.b.x, rectangle.b.y);
             }
             out.close();
         } catch (IOException ex) {
@@ -259,6 +299,7 @@ public class Problem {
     public void clear() {
         rectangles.clear();
         angles.clear();
+        pointsos.clear();
     }
 
     /**
