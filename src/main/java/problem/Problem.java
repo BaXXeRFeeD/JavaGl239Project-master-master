@@ -70,7 +70,7 @@ public class Problem {
      */
     public void solve() {
         ArrayList<Point> pointsosos = new ArrayList<>();
-        double max = Integer.MIN_VALUE;
+        double max = 0;
         for (Angle a : angles) {
             for (Rectangle r : rectangles) {
                 Line line[] = new Line[6];
