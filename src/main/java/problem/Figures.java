@@ -1,9 +1,7 @@
 package problem;
 
 import javax.media.opengl.GL2;
-import javax.media.opengl.GL2GL3;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 import static javax.media.opengl.GL.*;
@@ -73,15 +71,29 @@ public class Figures {
         }
     }
 
-    public static void renderQuad2(GL2 gl, ArrayList<Point> z) {
-        gl.glColor3d(0.5, 1, 0);
+    public static void renderQuad2(GL2 gl, ArrayList<Point> z,ArrayList<Point> rectangle,ArrayList<Point> angle) {
         gl.glLineWidth(5);
         gl.glPointSize(5);
+
+        gl.glColor3d(0.3, 0.2, 0.3);
+        gl.glBegin(GL_LINE_LOOP);
+        for(Point i : rectangle)
+            gl.glVertex2d(i.x,i.y);
+        gl.glEnd();
+
+        gl.glColor3d(1, 0, 1);
+        gl.glBegin(GL_LINE_STRIP);
+        for(Point i : angle)
+            gl.glVertex2d(i.x,i.y);
+        gl.glEnd();
+
+        gl.glColor3d(0.5, 1, 0);
         gl.glBegin(GL_POINTS);
         for (Point i : z) {
             gl.glVertex2d(i.x, i.y);
-            gl.glEnd();
         }
+        gl.glEnd();
+
         gl.glBegin(GL_LINE_LOOP);
         for (Point i : z)
             gl.glVertex2d(i.x, i.y);

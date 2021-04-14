@@ -2,7 +2,6 @@ package problem;
 
 import javax.media.opengl.GL;
 import javax.media.opengl.GL2;
-import java.util.Random;
 
 public class Angle {
     public Point vertex;

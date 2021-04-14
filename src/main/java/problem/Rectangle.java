@@ -2,7 +2,6 @@ package problem;
 
 import javax.media.opengl.GL;
 import javax.media.opengl.GL2;
-import java.util.ArrayList;
 
 public class Rectangle {
     public Point a;

@@ -32,8 +32,10 @@ public class Problem {
     private ArrayList<Point> points;
     private ArrayList<Angle> angles;
     private ArrayList<Rectangle> rectangles;
-    ArrayList<Point> pointos = new ArrayList<>();
-    ArrayList<Point> pointsos = new ArrayList<>();
+    private ArrayList<Point> pointos;
+    private ArrayList<Point> pointsos;
+    private ArrayList<Point> rectangle_end;
+    private ArrayList<Point> angle_end;
 
     /**
      * Конструктор класса задачи
@@ -42,6 +44,10 @@ public class Problem {
         points = new ArrayList<>();
         angles = new ArrayList<>();
         rectangles = new ArrayList<>();
+        pointos = new ArrayList<>();
+        pointsos = new ArrayList<>();
+        rectangle_end = new ArrayList<>();
+        angle_end = new ArrayList<>();
     }
 
     public void addAngle(Point vertex, Point a, Point b) {
@@ -88,25 +94,32 @@ public class Problem {
                             pointos.add(line[i].intersectionS(line[4]));
                     }
                 }
+                if (RectangleInAngle(r.a, a.vertex, a.vertexa, a.vertexb))
+                    pointos.add(r.a);
+                if (RectangleInAngle(r.b, a.vertex, a.vertexa, a.vertexb))
+                    pointos.add(r.b);
+                if (RectangleInAngle(r.c, a.vertex, a.vertexa, a.vertexb))
+                    pointos.add(r.c);
+                if (RectangleInAngle(r.d, a.vertex, a.vertexa, a.vertexb))
+                    pointos.add(r.d);
+                if (RectangleInAngle(a.vertex, r.a, r.b, r.c))
+                    pointos.add(a.vertex);
                 double d = square(pointos);
                 if (d > max) {
                     pointsosos.clear();
+                    rectangle_end.clear();
+                    angle_end.clear();
+                    angle_end.add(a.vertexa);
+                    angle_end.add(a.vertex);
+                    angle_end.add(a.vertexb);
+                    rectangle_end.add(r.a);
+                    rectangle_end.add(r.b);
+                    rectangle_end.add(r.c);
+                    rectangle_end.add(r.d);
                     max = d;
                     for (Point p : pointos) {
                         pointsosos.add(p);
                     }
-                    pointos.clear();
-                    pointos.add(new Point(r.a.x, r.a.y));
-                    pointos.add(new Point(r.b.x, r.b.y));
-                    pointos.add(new Point(r.c.x, r.c.y));
-                    pointos.add(new Point(r.d.x, r.d.y));
-                    pointos.add(new Point(a.vertex.x, a.vertex.y));
-                    for (int i = 0; i < 4; i++) {
-                        if (RectangleInAngle(pointos.get(i), a.vertex, a.vertexa, a.vertexb))
-                            pointsosos.add(pointos.get(i));
-                    }
-                    if (RectangleInAngle(pointos.get(4), r.a, r.b, r.c) || RectangleInAngle(pointos.get(4), r.d, r.b, r.c))
-                        pointsosos.add(pointos.get(4));
                 }
                 pointos.clear();
             }
@@ -300,6 +313,8 @@ public class Problem {
         rectangles.clear();
         angles.clear();
         pointsos.clear();
+        rectangle_end.clear();
+        angle_end.clear();
     }
 
     /**
@@ -314,6 +329,6 @@ public class Problem {
         for (Rectangle rectangle : rectangles) {
             rectangle.render(gl);
         }
-        Figures.renderQuad2(gl, pointsos);
+        Figures.renderQuad2(gl, pointsos, rectangle_end, angle_end);
     }
 }
