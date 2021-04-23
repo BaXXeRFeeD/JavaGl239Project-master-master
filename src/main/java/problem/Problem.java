@@ -104,6 +104,11 @@ public class Problem {
                     pointos.add(r.d);
                 if (RectangleInAngle(a.vertex, r.a, r.b, r.c))
                     pointos.add(a.vertex);
+                ArrayList<Point> arr2 = Convexity(pointos);
+                pointos.clear();
+                for (Point p : arr2) {
+                    pointos.add(p);
+                }
                 double d = square(pointos);
                 if (d > max) {
                     pointsosos.clear();
